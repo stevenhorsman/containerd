@@ -317,9 +317,10 @@ func (s *shim) Create(ctx context.Context, opts runtime.CreateOpts) (runtime.Tas
 	return s, nil
 }
 
-func (s *shim) PullImage(ctx context.Context) error {
+func (s *shim) PullImage(ctx context.Context, image string, cid string) error {
 	if _, err := s.task.PullImage(ctx, &task.PullImageRequest{
-		ID: s.ID(),
+		Image:       image,
+		ContainerID: cid,
 	}); err != nil {
 		return errdefs.FromGRPC(err)
 	}
