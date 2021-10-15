@@ -101,8 +101,8 @@ message ResizePtyRequest {
 }
 
 message PullImageRequest {
-	string id = 1;
-	string image = 2;
+	string image = 1;
+	string container_id = 2;	
 }
 
 message StateRequest {
