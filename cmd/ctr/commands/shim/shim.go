@@ -121,8 +121,9 @@ var pullImageCommand = cli.Command{
 			return err
 		}
 		_, err = service.PullImage(gocontext.Background(), &task.PullImageRequest{
-			Image:       context.Args().First(),
-			ContainerID: context.Args().Get(1),
+			ID:             context.GlobalString("id"),
+			Image:          context.Args().First(),
+			NewContainerID: context.Args().Get(1),
 		})
 		if err != nil {
 			return err
